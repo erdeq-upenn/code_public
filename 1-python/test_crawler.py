@@ -36,7 +36,7 @@ def parse_result(html):
 
 def write_item_to_file(item):
     print('开始写入数据 ====> ' + str(item))
-    with open('book.txt', 'a', encoding='UTF-8') as f:
+    with open('book.json', 'a', encoding='UTF-8') as f:
         f.write(json.dumps(item, ensure_ascii=False) + '\n')
 
 def write_raw_file(input):

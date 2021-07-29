@@ -3,7 +3,7 @@ import re
 import json
 import sys
 
-def request_dandan(url):
+def request_dangdang(url):
     try:
         response = requests.get(url)
         if response.status_code == 200:
@@ -52,7 +52,7 @@ def main(page):
         url = 'http://bang.dangdang.com/books/fivestars'
     else:
         url = 'http://bang.dangdang.com/books/fivestars/1-' + str(page)
-    html = request_dandan(url);
+    html = request_dangdang(url);
     # print(html)
     items = parse_result(html)  # 解析过滤我们想要的信息
 
@@ -61,5 +61,5 @@ def main(page):
     write_raw_file(html)
 
 if __name__ == "__main__":
-    for i in range(1, 5):
+    for i in range(1, 25):
         main(i)

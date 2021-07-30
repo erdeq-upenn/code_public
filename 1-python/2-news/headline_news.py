@@ -43,6 +43,7 @@ def getbag():
     bag.yyyy = yyyy
     bag.mm = mm
     bag.dd = dd
+    bag.baseurl = 'http://paper.people.com.cn/rmrb/html/%s-%s/%s/'%(bag.yyyy,bag.mm,bag.dd)
     return bag
 
 
@@ -89,27 +90,30 @@ def write_raw_file(input):
 def main():
 
     bag = getbag()
-    url = 'http://paper.people.com.cn/rmrb/html/%s-%s/%s/nbs.D110000renmrb_01.htm'%(bag.yyyy,bag.mm,bag.dd)
+    url = bag.baseurl+'nbs.D110000renmrb_01.htm'
     res = request_rmrb(url)
     soup = BeautifulSoup(res,features="lxml");
 
     a_htmls = soup.find_all('a')
     # counts = soup.find_all('swiper-slide')
     # print(len(counts))
-    j = []
+    news = []
     for i in a_htmls:
         if 'nw' in str(i):
-            j.append(i)
-    print(j)
+            news.append({'title':''.join(i.contents).strip(),
+                      'pageurl': bag.baseurl+i.attrs['href']}
+                    )
+    print(news)
 
-    a_htmls = soup.find_all('div')
-    # counts = soup.find_all('swiper-slide')
-    # print(len(counts))
-    j = []
-    for i in a_htmls:
-        if 'swiper-slide' in str(i):
-            j.append(i)
-    print(len(j))
+    # a_htmls = soup.find_all('div')
+    #
+    # j = []
+    # for i in a_htmls:
+    #     if 'swiper-slide' in str(i):
+    #         j.append(i)
+    # print(len(j.content))
+
+
     # #url = 'http://bang.dangdang.com/books/fivestars/01.00.00.00.00.00-recent30-0-0-1-' + str(page)
     # if page == 1:
     #     url = 'http://bang.dangdang.com/books/fivestars'

@@ -124,13 +124,11 @@ def display(detail=False):
 
 def main():
     bag = getbag()
-    # parse_home_url
-        # --> return
-    # url = bag.baseurl+'nbs.D110000renmrb_01.htm'
-    # res = request_rmrb(url)
     parse_result_homepage(bag)
     parse_all(bag)
     print('*'*100)
+    fmt_str = '%s  年  %s  月  %s  日'%(bag.yyyy,bag.mm,bag.dd)
+    print(fmt_str.center(100))
     for item in bag.news:
         for k in item:
             if len(k) != 0:

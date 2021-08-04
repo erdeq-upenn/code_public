@@ -3,6 +3,12 @@ import json
 import pymongo
 # pprint library is used to make the output look more pretty
 from pprint import pprint
+
+def check_uniqueness(id):
+    if newstable.find({'id':id}).count() > 1:
+        return False
+    return True
+
 # connect to MongoDB, change the << MONGODB URL >> to reflect your own connection string
 client = pymongo.MongoClient("mongodb+srv://detest1:aptx4869@de1.wim4p.mongodb.net/de1?retryWrites=true&w=majority")
 db = client.test
@@ -12,10 +18,14 @@ serverStatusResult=db.command("serverStatus")
 pprint(serverStatusResult)
 
 ##############
-booktable = client.my_database.news_rmrb
-data = []
+# upload to pymongodb
+newstable = client.my_database.news
+# data = []
 with open('news.json') as f:
     for line in f:
-        data.append(json.loads(line))
-booktable.insert_many(data)
+        if check_uniqueness(json.loads(line)['id']):
+            newstable.insert_one(json.loads(line))
+        # print(json.loads(line)['id'])
+#         data.append(json.loads(line))
+# newstable.insert_many(data)
 client.close()

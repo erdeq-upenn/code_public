@@ -95,7 +95,7 @@ def display(source, detail=False):
             print(df)
     if source=='pp':
         mask = df.source == 'pp'
-        print(df[mask].title)
+        print(df[mask].head(20).title)
 
 def main():
     bag = getbag()

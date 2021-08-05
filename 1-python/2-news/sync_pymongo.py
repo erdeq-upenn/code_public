@@ -1,3 +1,4 @@
+from bson.json_util import dumps
 from pymongo import MongoClient
 import json
 import pymongo
@@ -25,7 +26,16 @@ with open('news.json') as f:
     for line in f:
         if check_uniqueness(json.loads(line)['id']):
             newstable.insert_one(json.loads(line))
+f.close()
         # print(json.loads(line)['id'])
 #         data.append(json.loads(line))
 # newstable.insert_many(data)
+
+# sync db
+cursor = newstable.find({})
+with open('news_db.json', 'w') as file:
+    for document in cursor:
+        file.write(dumps(document,ensure_ascii=False))
+        file.write(',\n')
+file.close()
 client.close()

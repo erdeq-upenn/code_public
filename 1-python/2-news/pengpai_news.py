@@ -70,6 +70,7 @@ def parse_result_homepage(bag):
                      'date':bag.date_str,
                      'source':'pp',
                      'id':newsID,
+                     # '_id': {'$oid': ''}
                      })
     bag.news.append(news)
 
@@ -88,7 +89,7 @@ def write_raw_file(input):
 def display(source, detail=False):
     df = pd.read_json('news.json',lines=True)
     df.drop_duplicates(inplace=True)
-    
+
     if source=='rmrb':
         mask = df.page == '第01版:要闻'
         if not detail:

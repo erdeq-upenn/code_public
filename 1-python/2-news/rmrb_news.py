@@ -75,6 +75,7 @@ def parse_result(url,bag):
                                  'page':page_name,
                                  'source':'rmrb',
                                  'id':id,
+                                 # '_id': {'$oid': ''}
                                  })
             except:
                 print('No headlines, skip...')

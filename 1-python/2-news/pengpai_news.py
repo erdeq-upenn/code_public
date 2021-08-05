@@ -87,6 +87,8 @@ def write_raw_file(input):
 
 def display(source, detail=False):
     df = pd.read_json('news.json',lines=True)
+    df.drop_duplicates(inplace=True)
+    
     if source=='rmrb':
         mask = df.page == '第01版:要闻'
         if not detail:
@@ -104,6 +106,8 @@ def main():
     print('*'*100)
     fmt_str = '%s  年  %s  月  %s  日'%(bag.yyyy,bag.mm,bag.dd)
     print(fmt_str.center(100))
+    ff_str = '加入%s条新闻'%len(bag.news[0])
+    print(ff_str.center(100))
     for item in bag.news:
         for k in item:
             if len(k) != 0:

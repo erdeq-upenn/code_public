@@ -115,3 +115,70 @@ nom = 1*4 + 2*3
 denom = 2*4
 nom/denom
 myf2.destroy()
+
+
+###############
+# rod cutting problem
+import sys
+sys.setrecursionlimit(100) #增大递归次数限制
+p = [1, 5, 8, 9, 10, 17, 17, 20, 24, 30] #价格表
+def cut_rod(p, n):
+    # this is O(2^n)
+    if n == 0: #递归终止条件
+        return 0
+    q = -1
+    for i in range(n):
+        q = max(q, p[i] + cut_rod(p, n-i-1)) #递归比对所有i的收益，求最大值
+    return q
+%timeit cut_rod(p,4)
+s = []
+for i in range(len(p)):
+    s.append(cut_rod(p,i+1))
+s
+##################
+memo = [ -1 for _ in range(len(p)) ]
+def cut_rod2(p, n):
+    if n == 0:
+        return 0
+    if memo[n-1] > 0: #memo的下标从0开始，而n是自然下标需要变换
+        return memo[n-1]
+    q = -1
+    for i in range(n):
+        q = max(q, p[i] + cut_rod2(p, n-i-1))
+    memo[n-1] = q
+    return q
+%timeit cut_rod2(p,10)
+memo
+#################
+
+p = [1, 5, 8, 9, 10, 17, 17, 20, 24, 30]
+n = len(p)
+r = [ 0 for _ in range(n+1) ] #此处使用自然下标，0即为长度为0的钢条
+def bottom_up_cut_rod(p, n):
+    for j in range(1, n+1): #规模从小到大求解所有子问题
+        #此处的求解方法与自顶向下相同
+        q = -1
+        for i in range(1, j+1):
+            q = max(q, p[i-1] + r[j-i])
+        r[j] = q
+    return r[n]
+bottom_up_cut_rod(p,4)
+
+##################
+p = [1, 5, 8, 9, 10, 17, 17, 20, 24, 30]
+def my_rod(p,n):
+    r = [0 for _ in range(n+1)]
+    s= [0 for _ in range(n+1)]
+    # r[0] = 0
+
+    for j in range(1,n+1):
+        q = -1
+        for i in range(1,j+1):
+            # q = max(q, p[i-1] + r[j-i])
+            if q< p[i-1] + r[j-i]:
+                q = p[i-1] + r[j-i]
+
+                s[j] = i
+        r[j] = q
+    return (r,s)
+my_rod(p,9)

@@ -1,3 +1,6 @@
+'''
+    note of how to query: https://docs.mongodb.com/manual/tutorial/query-documents/
+'''
 from bson.json_util import dumps
 from pymongo import MongoClient
 import json

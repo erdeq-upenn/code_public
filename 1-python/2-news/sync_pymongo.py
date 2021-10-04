@@ -1,5 +1,16 @@
 '''
     note of how to query: https://docs.mongodb.com/manual/tutorial/query-documents/
+########################
+#
+# 
+newstable = client.test.users
+for i in newstable.find({'houses.neighborhood':'Uptown'}):
+    for item in i['houses']:
+        if item['neighborhood'] == 'Uptown':
+            print(item)
+#
+#
+########################
 '''
 from bson.json_util import dumps
 from pymongo import MongoClient

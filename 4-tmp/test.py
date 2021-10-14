@@ -182,3 +182,43 @@ def my_rod(p,n):
         r[j] = q
     return (r,s)
 my_rod(p,9)
+
+#--------------------------------
+# this is a class of UnionFind in disjoint set
+class UnionFind:
+    def __init__(self,size):
+        self.root = [i for i in range(size)]
+        self.rank = [1]*size
+    def find(self,x):
+        while self.root[x] != x:
+            x = self.root[x]
+        return x
+    def union(self,x,y):
+        X = self.find(x)
+        Y = self.find(y)
+        if X!=Y:
+            if self.rank[X] > self.rank[Y]:
+                self.root[Y] = X
+            elif self.rank[X] < self.rank[Y]:
+                self.root[X] = Y
+            else:
+                self.root[Y] = X
+                self.rank[X] +=1
+    def connected(self,x,y):
+        return self.find(x) == self.find(y)
+
+# Test case 
+uf = UnionFind(10)
+# 1-2-5-6-7 3-8-9 4
+uf.union(1, 2)
+uf.union(2, 5)
+uf.union(5, 6)
+uf.union(6, 7)
+uf.union(3, 8)
+uf.union(8, 9)
+print(uf.connected(1, 5))  # true
+print(uf.connected(5, 7))  # true
+print(uf.connected(4, 9))  # false
+# 1-2-5-6-7 3-8-9-4
+uf.union(9, 4)
+print(uf.connected(4, 9))  # true

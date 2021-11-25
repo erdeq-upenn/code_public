@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:400,700');
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+  cursor: pointer;
+}
+
+::-webkit-scrollbar-track {
+  background: #444444;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #6d6d6d;
+}
+
+body {
+  background-color: black !important;
+}
+
+.App {
+  text-align: center;
+  font-family: 'Roboto Slab', sans-serif;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.header-text {
+  color: white;
+  margin-top: 40px;
+}
+
+.content {
+  margin-top: 40px;
+  width: 1080px !important;
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.box {
+  width: 600px;
+  height: 600px;
+  background-color: #d9d9d9;
+  top: 50%;
+  left: 50%;
+}
+
+.left-column {
+  width: 200px;
+  height: 400px;
+  background-color: black;
+  display: inline-block;
+  float: left;
+}
+
+.right-column {
+  width: 200px;
+  height: 400px;
+  background-color: black;
+  display: inline-block;
+  float: right;
+}
+
+.column-header {
+  font-size: 18px;
+  color: white;
+  margin-top: 0;
+  margin-bottom: 35px;
+}
+
+.champ-button {
+  width: 120px;
+  height: 120px;
+  border-width: 0px;
+  padding: 0px;
+  line-height: 0;
+}
+
+.predict-button {
+  margin-top: 30px;
+  width: 200px;
+  height: 80px;
+  background-color: #c93c3c !important;
+  color: white;
+  font-size: 24px;
+  border-radius: 5px;
+  border: none !important;
+  font-family: 'Roboto Slab', sans-serif;
+  font-weight: bold;
+  -moz-transition: background-color .5s ease;
+  -o-transition: background-color .5s ease;
+  -webkit-transition: background-color .5s ease;
+  transition: background-color .5s ease;
+}
+
+.predict-button:hover {
+  background-color: #992929 !important;
+  cursor: pointer;
+}
+
+.reset-button {
+  width: 110px;
+  height: 60px;
+  background-color: #269948;
+  color: white;
+  font-size: 24px;
+  border-radius: 5px;
+  border: none !important;
+  font-family: 'Roboto Slab', sans-serif;
+  font-weight: bold;
+  -moz-transition: background-color .5s ease;
+  -o-transition: background-color .5s ease;
+  -webkit-transition: background-color .5s ease;
+  transition: background-color .5s ease;
+}
+
+.reset-button:hover {
+  background-color: #1c7737;
+  cursor: pointer;
+}
+
+.champ-image {
+  width: 60px;
+  margin: 1px;
+}
+
+.selected-image {
+  width: 60px;
+}
+
+.champ-image:hover {
+  cursor: pointer;
+  width: 56px;
+  margin: 3px;
+}
+
+.champ-select-box {
+  overflow: auto;
+  width: 680px;
+  height: 400px;
+  background-color: black;
+  display: inline-block;
+}
+
+.champ-label {
+  margin-top: 25px;
+  color: white;
+  font-size: 20px;
+}
+
+.champ-label-2 {
+  margin-top: 30px;
+  color: white;
+  font-size: 16px;
+}
+
+.loader {
+    border: 10px solid #f3f3f3; /* Light grey */
+    border-top: 10px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+
+    position: absolute;
+    top: 520px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    margin: auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+thead, tbody, tr, th { display: block; }

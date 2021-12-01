@@ -20,7 +20,7 @@ import pymongo
 from pprint import pprint
 
 def check_uniqueness(id):
-    if newstable.find({'id':id}).count() > 1:
+    if newstable.count_documents({'id':id}):
         return False
     return True
 

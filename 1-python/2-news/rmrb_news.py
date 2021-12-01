@@ -16,7 +16,6 @@ import tqdm
 from bs4 import BeautifulSoup
 os.environ["PYTHONDONTWRITEBYTECODE"] ="1"
 os.environ["PYTHONUNBUFFERED"] = "1"
-sys.path.append('~/Desktop/misc/mysys')
 sys.path.append('/Users/dequaner/Desktop/Mirror/git/erdeq-upenn/misc/mysys')
 import mybag
 from dateutil import tz

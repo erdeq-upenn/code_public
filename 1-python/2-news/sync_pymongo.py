@@ -53,3 +53,4 @@ with open('news_db.json', 'w') as file:
         file.write(',\n')
 file.close()
 client.close()
+print('DB sync done!')

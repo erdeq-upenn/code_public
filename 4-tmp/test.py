@@ -207,7 +207,7 @@ class UnionFind:
     def connected(self,x,y):
         return self.find(x) == self.find(y)
 
-# Test case 
+# Test case
 uf = UnionFind(10)
 # 1-2-5-6-7 3-8-9 4
 uf.union(1, 2)
